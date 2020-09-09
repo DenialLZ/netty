@@ -1,0 +1,44 @@
+syntax = "proto2"; //proto版本
+
+package com.lize.protobuf; //定义包名
+
+option optimize_for = SPEED;
+option java_package = "com.lize.netty_lecture.sixthexample"; //最终以这个包为准
+option java_outer_classname = "MyMessageMyDataInfo"; //外部类名
+
+message MyMessage {
+
+    enum DataType {
+        PersonType = 1;
+        DogType = 2;
+        CatType = 3;
+    }
+
+    required DataType data_type = 1;
+
+    oneof dataBody { //保持成员唯一性，多个字段保障只有一个字段被设值，设置后会清除之前的成员
+                     Person person = 2;
+                     Dog dog = 3;
+                     Cat cat = 4;
+    }
+}
+
+
+message Person {
+    optional string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
+
+message Dog {
+    optional string name = 1;
+    optional int32 age = 2;
+}
+
+message Cat {
+    optional string name = 2;
+    optional string city = 3;
+}
+
+
+

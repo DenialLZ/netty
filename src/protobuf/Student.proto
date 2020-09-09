@@ -1,0 +1,16 @@
+syntax = "proto2"; //proto版本
+
+package com.lize.protobuf; //定义包名
+
+option optimize_for = SPEED;
+option java_package = "com.lize.netty_lecture.sixthexample"; //最终以这个包为准
+option java_outer_classname = "MyDataInfo"; //外部类名
+
+message Person {
+    required string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
+
+
+
